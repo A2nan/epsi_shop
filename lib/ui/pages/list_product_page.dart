@@ -61,6 +61,13 @@ class ListProductPage extends StatelessWidget {
                       icon: const Icon(Icons.add_shopping_cart),
                       onPressed: () {
                         context.read<Cart>().addToCart(product);
+
+                        // Affiche un message de confirmation
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                              content:
+                                  Text('${product.title} ajouté au panier !')),
+                        );
                       },
                     ),
                   ),

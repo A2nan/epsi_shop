@@ -23,7 +23,24 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
+  // Méthode pour vider le panier
+  void clearCart() {
+    _items.clear();
+    notifyListeners();
+  }
+  
+  // Montant de la TVA (20% du prix hors taxes)
+  double get tvaHorsTaxes {
+    return totalPrice * 0.20;
+  }
+
+    // Total sans TVA
   double get totalPrice {
     return _items.fold(0.0, (sum, item) => sum + item.price);
+  }
+
+  // Total avec 20% de TVA
+  double get totalPriceAvecTva {
+    return totalPrice * 1.20;
   }
 }
